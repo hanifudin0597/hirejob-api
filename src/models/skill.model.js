@@ -1,0 +1,76 @@
+const db = require('../config/db');
+
+module.exports = {
+    selectAll: () => new Promise((resolve, reject) => {
+        db.query(`SELECT * FROM skills`, (error, result) => {
+            if (error) {
+                reject(error);
+            }
+            resolve(result);
+        });
+    }),
+    selectById: (id) => new Promise((resolve, reject) => {
+        db.query(`SELECT * FROM skills WHERE id=$1`, [id], (error, result) => {
+            if (error) {
+                reject(error);
+            }
+            resolve(result);
+        });
+    }),
+    inputSkill: (body) => new Promise((resolve, reject) => {
+        const {
+            id,
+            nameSkill,
+            createdDate,
+            idJobseeker
+        } = body;
+        db.query(
+            'INSERT INTO skills (id, name, created_date, jobseeker_id) VALUES ($1, $2, $3, $4)',
+            [
+                id,
+                nameSkill,
+                createdDate,
+                idJobseeker
+            ],
+            (error, result) => {
+                if (error) {
+                    reject(error);
+                }
+                resolve(result);
+            },
+        );
+    }),
+    updateById: (id, body) => new Promise((resolve, reject) => {
+        const {
+            position,
+            company,
+            date,
+            description,
+        } = body;
+
+        db.query(
+            'UPDATE skills SET position=$1, company=$2, date=$3, description=$4 WHERE id=$5',
+            [
+                position,
+                company,
+                date,
+                description,
+                id
+            ],
+            (error, result) => {
+                if (error) {
+                    reject(error);
+                }
+                resolve(result);
+            },
+        );
+    }),
+    removeById: (id) => new Promise((resolve, reject) => {
+        db.query('DELETE FROM skills WHERE id=$1', [id], (error, result) => {
+            if (error) {
+                reject(error);
+            }
+            resolve(result);
+        });
+    }),
+};
