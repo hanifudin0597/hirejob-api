@@ -12,10 +12,11 @@ const { v4: uuidv4 } = require('uuid');
 module.exports = {
     list: async (req, res) => {
         try {
-            const { page, limit } = req.query;
+            const { page, limit, search } = req.query;
+            const searchValue = search || ''
             const count = await jobseekerModel.countAll();
             const paging = createPagination(count.rows[0].count, page, limit);
-            const users = await jobseekerModel.selectAll(paging);
+            const users = await jobseekerModel.selectAll(paging, searchValue);
 
             success(res, {
                 code: 200,

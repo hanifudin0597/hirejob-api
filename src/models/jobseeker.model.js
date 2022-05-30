@@ -1,8 +1,8 @@
 const db = require('../config/db');
 
 module.exports = {
-    selectAll: (paging) => new Promise((resolve, reject) => {
-        db.query(`SELECT  jobseekers.id, login.name, login.email, login.phone, login.created_date, jobseekers.job_description, jobseekers.address, jobseekers.workplace, jobseekers.photo, jobseekers.description, jobseekers.created_date, jobseekers.skill_name FROM jobseekers INNER JOIN login ON jobseekers.login_id = login.id LIMIT ${paging.limit} OFFSET ${paging.offset};`, (error, result) => {
+    selectAll: (paging, search) => new Promise((resolve, reject) => {
+        db.query(`SELECT  jobseekers.id, login.name, login.email, login.phone, login.created_date, jobseekers.job_description, jobseekers.address, jobseekers.workplace, jobseekers.photo, jobseekers.description, jobseekers.created_date, jobseekers.skill_name FROM jobseekers INNER JOIN login ON jobseekers.login_id = login.id WHERE LOWER(login.name) LIKE '%${search.toLowerCase()}%' LIMIT ${paging.limit} OFFSET ${paging.offset};`, (error, result) => {
             if (error) {
                 reject(error);
             }

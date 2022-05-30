@@ -1,14 +1,13 @@
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
-const authModel = require('../models/auth.model');
-const jobseekerModel = require('../models/jobseeker.model')
+const recruiterModel = require('../models/authrecruiter.model');
 const jwtToken = require('../utils/generateJwtToken');
 const { failed, success } = require('../utils/createResponse');
 
 module.exports = {
     register: async (req, res) => {
         try {
-            const user = await authModel.selectByEmail(req.body.email);
+            const user = await recruiterModel.selectByEmail(req.body.email);
             if (user.rowCount) {
                 failed(res, {
                     code: 409,
@@ -17,27 +16,28 @@ module.exports = {
                 });
                 return;
             }
-
             bcrypt.hash(req.body.password, 10, async (err, hash) => {
                 if (err) {
                     failed(res, { code: 400, payload: err.message, message: 'failed hash password' })
                 }
 
-                authModel.register({
+                recruiterModel.register({
                     id: uuidv4(),
                     ...req.body,
                     hash,
-                    level: '1',
+                    level: '2',
                     createdDate: new Date(),
                 });
 
-                const getID = await authModel.selectByEmail(req.body.email);
-
-                jobseekerModel.input({
+                const getID = await recruiterModel.selectByEmail(req.body.email);
+                // console.log(getID)
+                recruiterModel.registerRecruiter({
+                    ...req.body,
                     id: uuidv4(),
-                    loginID: getID.rows[0].id,
+                    loginId: getID.rows[0].id,
                     createdDate: new Date(),
                 })
+
                 success(res, {
                     code: 201,
                     payload: null,
@@ -56,8 +56,8 @@ module.exports = {
     login: async (req, res) => {
         try {
             const { email, password } = req.body;
-            const user = await authModel.login(email);
-            const userId = await jobseekerModel.selectByIdUser(user.rows[0].id)
+            const user = await recruiterModel.login(email);
+            const userId = await recruiterModel.selectByIdUser(user.rows[0].id)
 
             // jika user ditemukan
             if (user.rowCount > 0) {
@@ -75,7 +75,7 @@ module.exports = {
                         token: {
                             jwt,
                             id: user.rows[0].id,
-                            idJobseeker: userId.rows[0].id,
+                            idRecruiter: userId.rows[0].id,
                         },
                     });
                     return;

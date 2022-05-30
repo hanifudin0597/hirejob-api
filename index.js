@@ -7,6 +7,8 @@ const { APP_NAME, NODE_ENV, PORT } = require('./src/utils/env');
 const { failed } = require('./src/utils/createResponse');
 const authRoute = require('./src/router/auth.route');
 const userRoute = require('./src/router/user.route')
+const authrecruiter = require('./src/router/authrecruiter.route')
+const recruiter = require('./src/router/recruiter.route')
 
 // deklarasi express
 const app = express();
@@ -27,7 +29,7 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => res.send(`${APP_NAME} API - ${NODE_ENV[0].toUpperCase() + NODE_ENV.slice(1)}`));
 // main router
 
-app.use(authRoute, userRoute);
+app.use(authRoute, userRoute, authrecruiter, recruiter);
 
 
 // 404 router
