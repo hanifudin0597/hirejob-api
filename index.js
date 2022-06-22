@@ -22,6 +22,7 @@ app.use(
 )
 app.use(xss())
 app.use(cors())
+app.options('*', cors())
 app.use(express.static('public'))
 app.use(bodyParser.json())
 
