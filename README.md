@@ -75,7 +75,7 @@ cd hirejob-api
 ```
 npm install
 ```
-- Make a new database and import [foodrecipe.sql](https://drive.google.com/file/d/1g5xMTRPYdZzwdR42PlETM15tpLDTzpEv/view?usp=sharing)
+- Make a new database and import [hirejob.sql](https://drive.google.com/file/d/1g5xMTRPYdZzwdR42PlETM15tpLDTzpEv/view?usp=sharing)
 - <a href="#setup-env-example">Setup .env</a>
 - Starting application
 ```
