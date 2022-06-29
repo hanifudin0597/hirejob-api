@@ -59,7 +59,7 @@ This is an example of how to list things you need to use the software and how to
 ### Requirements
 * [Node.js](https://nodejs.org/en/)
 * [Postman](https://www.getpostman.com/) for testing
-* [Database]https://drive.google.com/file/d/1g5xMTRPYdZzwdR42PlETM15tpLDTzpEv/view?usp=sharing)
+* [Database](https://drive.google.com/file/d/1g5xMTRPYdZzwdR42PlETM15tpLDTzpEv/view?usp=sharing)
 
 ### Installation
 
@@ -75,7 +75,7 @@ cd hirejob-api
 ```
 npm install
 ```
-- Make a new database and import [foodrecipe.sql]https://drive.google.com/file/d/1g5xMTRPYdZzwdR42PlETM15tpLDTzpEv/view?usp=sharing)
+- Make a new database and import [foodrecipe.sql](https://drive.google.com/file/d/1g5xMTRPYdZzwdR42PlETM15tpLDTzpEv/view?usp=sharing)
 - <a href="#setup-env-example">Setup .env</a>
 - Starting application
 ```
