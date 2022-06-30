@@ -104,9 +104,9 @@ JWT_SECRET=
 
 ## Rest Api
 
-You can view my Postman collection [here](https://www.postman.com/crimson-meadow-842892/workspace/Telegram-Clone~eea3df8d-1aca-4df2-920b-d8a9d5e1e0d6/collection/10655215-e9feb563-0dd8-4675-b396-eece73f7525e)
+You can view my Postman collection [here](https://www.postman.com/orange-shadow-15033/workspace/hirejob/collection/19742227-440af913-7cf7-4d17-a1b7-303d928a2e8c?ctx=documentation)
 </br>
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/10655215-e9feb563-0dd8-4675-b396-eece73f7525e?action=collection%2Ffork&collection-url=entityId%3D10655215-e9feb563-0dd8-4675-b396-eece73f7525e%26entityType%3Dcollection%26workspaceId%3Deea3df8d-1aca-4df2-920b-d8a9d5e1e0d6)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/19742227-440af913-7cf7-4d17-a1b7-303d928a2e8c?action=collection%2Ffork&collection-url=entityId%3D19742227-440af913-7cf7-4d17-a1b7-303d928a2e8c%26entityType%3Dcollection%26workspaceId%3Dd8d490ff-4e1e-4fca-ad9a-1dde3ddc92ba)
 
 <!-- CONTRIBUTING -->
 ## Contributing
